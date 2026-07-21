@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Charte du Salon — Narilolané</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --prune:#6B2D4E;
+    --nari:#8B2252;
+    --or:#C9A84C;
+    --beige:#F5ECD8;
+    --texte:#3A2230;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Jost',sans-serif;
+    background:var(--prune);
+    color:var(--texte);
+    line-height:1.6;
+    padding:24px 16px 48px;
+    -webkit-font-smoothing:antialiased;
+  }
+  .carte{
+    max-width:560px;
+    margin:0 auto;
+    background:var(--beige);
+    border:2px solid var(--or);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  header{
+    background:var(--prune);
+    color:var(--beige);
+    text-align:center;
+    padding:36px 24px 30px;
+    border-bottom:2px solid var(--or);
+  }
+  .medaillon{
+    width:64px;height:64px;
+    margin:0 auto 16px;
+    border:2px solid var(--or);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;font-weight:700;
+    color:var(--or);
+  }
+  header .marque{
+    font-family:'Cormorant Garamond',serif;
+    font-size:15px;letter-spacing:.32em;
+    text-transform:uppercase;
+    color:var(--or);
+    margin-bottom:6px;
+  }
+  header h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:34px;font-weight:600;
+    line-height:1.1;
+  }
+  header .sous{
+    font-size:13px;margin-top:10px;opacity:.85;
+    font-weight:300;
+  }
+  .corps{padding:30px 26px 8px}
+  .salam{
+    font-family:'Cormorant Garamond',serif;
+    font-size:19px;font-style:italic;
+    color:var(--nari);
+    text-align:center;
+    margin-bottom:22px;
+  }
+  .bloc{margin-bottom:26px}
+  .bloc h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:21px;font-weight:600;
+    color:var(--nari);
+    margin-bottom:10px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .bloc p{font-size:15px;margin-bottom:8px;font-weight:300}
+  ol.regles{list-style:none;counter-reset:r}
+  ol.regles li{
+    counter-increment:r;
+    position:relative;
+    padding:12px 0 12px 46px;
+    font-size:14.5px;font-weight:300;
+    border-bottom:1px solid rgba(107,45,78,.14);
+  }
+  ol.regles li:last-child{border-bottom:none}
+  ol.regles li::before{
+    content:counter(r);
+    position:absolute;left:0;top:11px;
+    width:30px;height:30px;
+    background:var(--prune);color:var(--or);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Cormorant Garamond',serif;
+    font-size:16px;font-weight:600;
+  }
+  ol.regles li b{font-weight:600;color:var(--nari)}
+  .note{
+    background:rgba(107,45,78,.07);
+    border-left:3px solid var(--or);
+    padding:14px 16px;
+    font-size:13.5px;font-weight:300;
+    margin-bottom:26px;
+  }
+  .duaa{
+    text-align:center;
+    font-family:'Cormorant Garamond',serif;
+    font-style:italic;font-size:16px;
+    color:var(--nari);
+    padding:6px 0 4px;
+  }
+  /* Formulaire */
+  .signature{
+    background:var(--prune);
+    padding:30px 26px 34px;
+    border-top:2px solid var(--or);
+  }
+  .signature h2{
+    font-family:'Cormorant Garamond',serif;
+    color:var(--or);
+    font-size:24px;font-weight:600;
+    text-align:center;margin-bottom:6px;
+  }
+  .signature .intro{
+    color:var(--beige);opacity:.85;
+    text-align:center;font-size:13px;font-weight:300;
+    margin-bottom:22px;
+  }
+  label{
+    display:block;
+    color:var(--beige);
+    font-size:12px;letter-spacing:.08em;
+    text-transform:uppercase;
+    margin:0 0 6px 2px;font-weight:500;
+  }
+  input[type=text], select{
+    width:100%;
+    padding:13px 14px;
+    border:1px solid var(--or);
+    background:var(--beige);
+    color:var(--texte);
+    font-family:'Jost',sans-serif;
+    font-size:15px;
+    border-radius:3px;
+    margin-bottom:18px;
+    -webkit-appearance:none;appearance:none;
+  }
+  select{
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%236B2D4E' stroke-width='2'><polyline points='6 9 12 15 18 9'/></svg>");
+    background-repeat:no-repeat;
+    background-position:right 14px center;
+  }
+  input:focus, select:focus{outline:2px solid var(--or);outline-offset:1px}
+  .accept{
+    display:flex;align-items:flex-start;gap:11px;
+    background:rgba(245,236,216,.08);
+    border:1px solid rgba(201,168,76,.5);
+    padding:14px;border-radius:3px;
+    margin-bottom:22px;cursor:pointer;
+  }
+  .accept input{margin-top:3px;width:19px;height:19px;accent-color:var(--or);flex-shrink:0}
+  .accept span{color:var(--beige);font-size:13.5px;font-weight:300}
+  .btn{
+    width:100%;
+    padding:16px;
+    background:var(--or);
+    color:var(--prune);
+    border:none;border-radius:3px;
+    font-family:'Jost',sans-serif;
+    font-size:15px;font-weight:600;
+    letter-spacing:.04em;
+    cursor:pointer;
+    transition:transform .1s, opacity .2s;
+  }
+  .btn:hover{transform:translateY(-1px)}
+  .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+  .erreur{
+    color:#F5C0C0;font-size:13px;
+    text-align:center;margin-top:12px;
+    min-height:18px;font-weight:300;
+  }
+  footer{
+    text-align:center;
+    padding:22px;
+    color:var(--beige);opacity:.7;
+    font-size:11px;letter-spacing:.15em;
+    text-transform:uppercase;
+  }
+  @media (max-width:480px){
+    header h1{font-size:28px}
+    .bloc h2{font-size:19px}
+    .corps,.signature{padding-left:20px;padding-right:20px}
+  }
+</style>
+</head>
+<body>
+  <div class="carte">
+    <header>
+      <div class="medaillon">N</div>
+      <div class="marque">🇰🇲 Narilolané 🇾🇹</div>
+      <h1>Charte du Salon</h1>
+      <div class="sous">Mise en relation encadrée · en vue du mariage</div>
+    </header>
+
+    <div class="corps">
+      <p class="salam">Assalamu alaykoum wa rahmatullah</p>
+
+      <div class="bloc">
+        <h2>🎯 Objectif</h2>
+        <p>Permettre un premier échange encadré entre deux personnes compatibles, en présence du mahram et des administrateurs, dans un cadre bienveillant, sérieux et respectueux.</p>
+      </div>
+
+      <div class="bloc">
+        <h2>✅ Composition du salon</h2>
+        <p>Ce salon réunit les deux prétendants, le mahram de la sœur (père, frère ou oncle), et les administrateurs Narilolané.</p>
+      </div>
+
+      <div class="bloc">
+        <h2>⚠️ Les engagements</h2>
+        <ol class="regles">
+          <li><b>Intention claire</b> — recherche d'un mariage halal, sans jeu ni flirt.</li>
+          <li><b>Propos respectueux</b> — aucune moquerie, parole déplacée ou obscène.</li>
+          <li><b>Confidentialité</b> — rien de ce qui est échangé ici n'est divulgué à des tiers.</li>
+          <li><b>Tout se passe dans le salon</b> — messages, vocaux et appels ont lieu ici, jusqu'à la décision finale (accord des deux familles et/ou date de mariage). Nos sœurs, n'acceptez aucun échange en dehors du salon.</li>
+          <li><b>Photos en vue unique</b> — sans capture d'écran ni enregistrement.</li>
+          <li><b>Honnêteté</b> — sur le statut matrimonial, les enfants, la situation professionnelle et administrative, les intentions.</li>
+          <li><b>En cas de désintérêt</b> — le faire savoir avec respect, sans mépris ni silence blessant.</li>
+          <li><b>Vérifications</b> — quand l'échange devient sérieux, renseignez-vous sur la famille et l'entourage. Une personne sincère n'hésitera jamais à vous présenter à ses proches.</li>
+        </ol>
+      </div>
+
+      <div class="note">
+        <b>Confidentialité des administrateurs :</b> nous ne lisons pas vos messages et n'écoutons pas vos vocaux, sauf si vous nous le demandez ou en cas de suspicion de manquement à cette charte. Nous pouvons ouvrir le salon pour libérer les notifications. Nous n'intervenons pas dans vos appels, qui doivent toutefois avoir lieu ici.
+        <br><br>
+        Nous précisons que Narilolané n'est pas responsable de ces échanges sur le plan islamique et culturel : cette responsabilité incombe au mahram de la sœur, d'où sa présence obligatoire dans le salon.
+      </div>
+
+      <div class="bloc">
+        <h2>👥 Rôle des administrateurs</h2>
+        <p>Tiers de confiance, présents pour encadrer l'échange. Vous pouvez nous contacter à tout moment en cas de difficulté.</p>
+      </div>
+
+      <p class="duaa">Qu'Allah facilite vos démarches et vous guide vers le meilleur.<br>BarakAllahou fikoum. 🤍</p>
+    </div>
+
+    <div class="signature">
+      <h2>Signer la charte</h2>
+      <p class="intro">Renseignez votre nom, votre rôle, cochez l'acceptation, puis validez. Votre signature est transmise aux administrateurs, horodatée.</p>
+
+      <label for="code">Nom et prénom</label>
+      <input type="text" id="code" placeholder="Ex. Amina Saïd" autocomplete="off">
+
+      <label for="role">Vous êtes</label>
+      <select id="role">
+        <option value="">— Sélectionner —</option>
+        <option value="Prétendant">Le prétendant</option>
+        <option value="Prétendante">La prétendante</option>
+        <option value="Mahram">Le mahram (père / frère / oncle)</option>
+      </select>
+
+      <label class="accept" for="ok">
+        <input type="checkbox" id="ok">
+        <span>J'ai lu la charte dans son intégralité et je m'engage à la respecter.</span>
+      </label>
+
+      <button class="btn" id="envoyer" disabled>Signer et transmettre</button>
+      <div class="erreur" id="msg"></div>
+    </div>
+
+    <footer>Narilolané · Ensemble Nari Kayé Vamoja</footer>
+  </div>
+
+<script>
+  // ⬇️ REMPLACE ce numéro par ton WhatsApp admin (format international, sans +, sans 0)
+  const WHATSAPP_ADMIN = "33613857373";
+
+  const code = document.getElementById('code');
+  const role = document.getElementById('role');
+  const ok   = document.getElementById('ok');
+  const btn  = document.getElementById('envoyer');
+  const msg  = document.getElementById('msg');
+
+  function verifier(){
+    btn.disabled = !(code.value.trim() && role.value && ok.checked);
+  }
+  [code, role, ok].forEach(el => el.addEventListener('input', verifier));
+
+  btn.addEventListener('click', () => {
+    if(WHATSAPP_ADMIN === "REMPLACER_NUMERO"){
+      msg.textContent = "⚠️ Numéro admin non configuré dans la page.";
+      return;
+    }
+    const c = code.value.trim();
+    const r = role.value;
+    const maintenant = new Date();
+    const date = maintenant.toLocaleDateString('fr-FR');
+    const heure = maintenant.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+
+    const texte =
+`✍️ SIGNATURE DE LA CHARTE — Narilolané
+
+Nom et prénom : ${c}
+Rôle : ${r}
+Date : ${date} à ${heure}
+
+Je soussigné(e) ${c} (${r}) déclare avoir lu et accepté la charte du salon Narilolané, et m'engage à la respecter.`;
+
+    const url = "https://wa.me/" + WHATSAPP_ADMIN + "?text=" + encodeURIComponent(texte);
+    window.open(url, '_blank');
+    msg.style.color = "#C9A84C";
+    msg.textContent = "✅ Ouverture de WhatsApp… envoyez le message pour finaliser.";
+  });
+</script>
+</body>
+</html>
