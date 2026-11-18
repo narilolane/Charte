@@ -9,10 +9,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   :root{
-    --prune:#6B2D4E;
-    --nari:#8B2252;
-    --or:#C9A84C;
-    --beige:#F5ECD8;
+    --prune:#7A2348;
+    --prune-fonce:#5E1838;
+    --nari:#7A2348;
+    --or:#B8902F;
+    --or-clair:#E3C05A;
+    --beige:#FBF1DB;
+    --beige-fonce:#F0E2C4;
     --texte:#3A2230;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -48,13 +51,13 @@
     display:flex;align-items:center;justify-content:center;
     font-family:'Cormorant Garamond',serif;
     font-size:34px;font-weight:700;
-    color:var(--or);
+    color:var(--or-clair);
   }
   header .marque{
     font-family:'Cormorant Garamond',serif;
     font-size:15px;letter-spacing:.32em;
     text-transform:uppercase;
-    color:var(--or);
+    color:var(--or-clair);
     margin-bottom:6px;
   }
   header h1{
@@ -96,7 +99,7 @@
     content:counter(r);
     position:absolute;left:0;top:11px;
     width:30px;height:30px;
-    background:var(--prune);color:var(--or);
+    background:var(--prune);color:var(--or-clair);
     border-radius:50%;
     display:flex;align-items:center;justify-content:center;
     font-family:'Cormorant Garamond',serif;
@@ -125,7 +128,7 @@
   }
   .signature h2{
     font-family:'Cormorant Garamond',serif;
-    color:var(--or);
+    color:var(--or-clair);
     font-size:24px;font-weight:600;
     text-align:center;margin-bottom:6px;
   }
@@ -166,8 +169,30 @@
     padding:14px;border-radius:3px;
     margin-bottom:22px;cursor:pointer;
   }
-  .accept input{margin-top:3px;width:19px;height:19px;accent-color:var(--or);flex-shrink:0}
+  .accept input{margin-top:3px;width:19px;height:19px;accent-color:var(--or-clair);flex-shrink:0}
   .accept span{color:var(--beige);font-size:13.5px;font-weight:300}
+  .paiement{
+    background:rgba(245,236,216,.08);
+    border:1px solid rgba(201,168,76,.5);
+    border-radius:4px;
+    padding:16px;
+    margin-bottom:18px;
+  }
+  .paiement-titre{
+    color:var(--or-clair);
+    font-size:13px;letter-spacing:.06em;
+    text-transform:uppercase;font-weight:500;
+    margin-bottom:8px;
+  }
+  .paiement p{color:var(--beige);font-size:13.5px;font-weight:300;margin-bottom:10px}
+  .lien-pay{
+    display:inline-block;
+    background:var(--or-clair);
+    color:var(--prune-fonce);
+    text-decoration:none;
+    font-weight:600;font-size:14px;
+    padding:9px 16px;border-radius:3px;
+  }
   .btn{
     width:100%;
     padding:16px;
@@ -215,12 +240,12 @@
 
       <div class="bloc">
         <h2>🎯 Objectif</h2>
-        <p>Permettre un échange encadré entre deux personnes compatibles, en présence du mahram et des administrateurs, dans un cadre bienveillant, sérieux et respectueux.</p>
+        <p>Permettre un échange encadré entre deux personnes compatibles, en présence du tuteur et des administrateurs, dans un cadre bienveillant, sérieux et respectueux.</p>
       </div>
 
       <div class="bloc">
         <h2>✅ Composition du salon</h2>
-        <p>Ce salon réunit les deux prétendants, le mahram de la sœur (père, frère ou oncle), et les administrateurs Narilolané.</p>
+        <p>Ce salon réunit les deux prétendants, le tuteur (mahram) de la sœur — père, frère ou oncle —, et les administrateurs Narilolané.</p>
       </div>
 
       <div class="bloc">
@@ -241,7 +266,7 @@
       <div class="note">
         <b>Confidentialité des administrateurs :</b> nous ne lisons pas vos messages et n'écoutons pas vos vocaux, sauf si vous nous le demandez ou en cas de suspicion de manquement à cette charte. Il peut nous arriver d'ouvrir brièvement le salon pour des raisons techniques. Nous n'intervenons pas dans vos appels, qui doivent toutefois avoir lieu ici.
         <br><br>
-        Nous veillons à ce que le cadre islamique et culturel de cet échange soit respecté, mais le mahram en demeure le premier garant, d'où sa présence obligatoire. Narilolané agit comme intermédiaire et facilitateur, aux côtés du mahram.
+        Nous veillons à ce que le cadre islamique et culturel de cet échange soit respecté, mais le tuteur en demeure le premier garant, d'où sa présence obligatoire. Narilolané agit comme intermédiaire et facilitateur, aux côtés du tuteur.
       </div>
 
       <div class="bloc">
@@ -264,12 +289,26 @@
         <option value="">— Sélectionner —</option>
         <option value="Prétendant">Le prétendant</option>
         <option value="Prétendante">La prétendante</option>
-        <option value="Mahram">Le mahram (père / frère / oncle)</option>
+        <option value="Mahram">Le tuteur (père / frère / oncle)</option>
       </select>
+
+      <label for="annonce">Mise en relation avec</label>
+      <input type="text" id="annonce" placeholder="Nom de la personne ou intitulé de l'annonce" autocomplete="off">
+
+      <div id="zone-paiement">
+        <div class="paiement">
+          <div class="paiement-titre">💳 Participation</div>
+          <p>La mise en relation est un service à 5 €, réglé via PayPal. Un don libre reste le bienvenu pour soutenir le projet.</p>
+          <a class="lien-pay" href="https://paypal.me/Narilolane" target="_blank" rel="noopener">paypal.me/Narilolane</a>
+        </div>
+
+        <label for="ref">Référence du paiement PayPal</label>
+        <input type="text" id="ref" placeholder="N° de transaction ou nom utilisé pour le paiement" autocomplete="off">
+      </div>
 
       <label class="accept" for="ok">
         <input type="checkbox" id="ok">
-        <span>J'ai lu la charte dans son intégralité et je m'engage à la respecter.</span>
+        <span>J'ai lu la charte dans son intégralité, j'accepte d'être mis(e) en relation dans ce cadre, et je m'engage à la respecter.</span>
       </label>
 
       <button class="btn" id="envoyer" disabled>Signer et transmettre</button>
@@ -285,14 +324,29 @@
 
   const code = document.getElementById('code');
   const role = document.getElementById('role');
+  const annonce = document.getElementById('annonce');
+  const ref  = document.getElementById('ref');
   const ok   = document.getElementById('ok');
   const btn  = document.getElementById('envoyer');
   const msg  = document.getElementById('msg');
+  const zonePaiement = document.getElementById('zone-paiement');
+
+  function estMahram(){ return role.value === 'Mahram'; }
+
+  function majPaiement(){
+    // Le mahram ne paie pas : on masque le paiement et la référence
+    zonePaiement.style.display = estMahram() ? 'none' : 'block';
+  }
 
   function verifier(){
-    btn.disabled = !(code.value.trim() && role.value && ok.checked);
+    const baseOk = code.value.trim() && role.value && annonce.value.trim() && ok.checked;
+    const paiementOk = estMahram() ? true : ref.value.trim();
+    btn.disabled = !(baseOk && paiementOk);
   }
-  [code, role, ok].forEach(el => el.addEventListener('input', verifier));
+
+  role.addEventListener('change', () => { majPaiement(); verifier(); });
+  [code, role, annonce, ref, ok].forEach(el => el.addEventListener('input', verifier));
+  majPaiement();
 
   btn.addEventListener('click', () => {
     if(WHATSAPP_ADMIN === "REMPLACER_NUMERO"){
@@ -301,22 +355,27 @@
     }
     const c = code.value.trim();
     const r = role.value;
+    const a = annonce.value.trim();
+    const p = ref.value.trim();
     const maintenant = new Date();
     const date = maintenant.toLocaleDateString('fr-FR');
     const heure = maintenant.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
+
+    const lignePaiement = estMahram() ? '' : `Référence paiement PayPal : ${p}\n`;
 
     const texte =
 `✍️ SIGNATURE DE LA CHARTE — Narilolané
 
 Nom et prénom : ${c}
 Rôle : ${r}
-Date : ${date} à ${heure}
+Mise en relation avec : ${a}
+${lignePaiement}Date : ${date} à ${heure}
 
-Je soussigné(e) ${c} (${r}) déclare avoir lu et accepté la charte du salon Narilolané, et m'engage à la respecter.`;
+Je soussigné(e) ${c} (${r}) déclare avoir lu et accepté la charte du salon Narilolané, accepte d'être mis(e) en relation avec ${a}, et m'engage à respecter cette charte.`;
 
     const url = "https://wa.me/" + WHATSAPP_ADMIN + "?text=" + encodeURIComponent(texte);
     window.open(url, '_blank');
-    msg.style.color = "#C9A84C";
+    msg.style.color = "#E3C05A";
     msg.textContent = "✅ Ouverture de WhatsApp… envoyez le message pour finaliser.";
   });
 </script>
