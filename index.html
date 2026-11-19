@@ -295,6 +295,22 @@
       <label for="annonce">Mise en relation avec</label>
       <input type="text" id="annonce" placeholder="Nom de la personne ou intitulé de l'annonce" autocomplete="off">
 
+      <div id="zone-referent">
+        <div class="paiement" style="background:rgba(245,236,216,.05)">
+          <div class="paiement-titre" id="referent-titre">👪 Votre référent familial</div>
+          <p id="referent-desc">Indiquez la personne de votre famille qui vous accompagne dans cette démarche.</p>
+        </div>
+
+        <label for="ref-nom" id="ref-nom-label">Nom du tuteur (mahram)</label>
+        <input type="text" id="ref-nom" placeholder="Nom et prénom" autocomplete="off">
+
+        <label for="ref-lien">Lien de parenté</label>
+        <input type="text" id="ref-lien" placeholder="Ex. père, frère, oncle" autocomplete="off">
+
+        <label for="ref-tel">Coordonnées du référent</label>
+        <input type="text" id="ref-tel" placeholder="Téléphone ou WhatsApp" autocomplete="off">
+      </div>
+
       <div id="zone-paiement">
         <div class="paiement">
           <div class="paiement-titre">💳 Participation</div>
@@ -330,23 +346,47 @@
   const btn  = document.getElementById('envoyer');
   const msg  = document.getElementById('msg');
   const zonePaiement = document.getElementById('zone-paiement');
+  const zoneReferent = document.getElementById('zone-referent');
+  const refNom = document.getElementById('ref-nom');
+  const refLien = document.getElementById('ref-lien');
+  const refTel = document.getElementById('ref-tel');
+  const refTitre = document.getElementById('referent-titre');
+  const refDesc = document.getElementById('referent-desc');
+  const refNomLabel = document.getElementById('ref-nom-label');
 
   function estMahram(){ return role.value === 'Mahram'; }
+  function estFemme(){ return role.value === 'Prétendante'; }
 
   function majPaiement(){
-    // Le mahram ne paie pas : on masque le paiement et la référence
+    // Le tuteur ne paie pas : on masque le paiement et la référence
     zonePaiement.style.display = estMahram() ? 'none' : 'block';
+  }
+
+  function majReferent(){
+    // Le tuteur ne remplit pas de référent ; les prétendants oui
+    zoneReferent.style.display = (role.value && !estMahram()) ? 'block' : 'none';
+    if(estFemme()){
+      refTitre.textContent = '👪 Votre tuteur (mahram)';
+      refDesc.textContent = "Indiquez votre tuteur légal qui vous accompagne : père, frère ou oncle.";
+      refNomLabel.textContent = 'Nom du tuteur (mahram)';
+    } else {
+      refTitre.textContent = '👪 Votre référent familial';
+      refDesc.textContent = "Indiquez un membre de votre famille qui vous accompagne dans cette démarche.";
+      refNomLabel.textContent = 'Nom du référent familial';
+    }
   }
 
   function verifier(){
     const baseOk = code.value.trim() && role.value && annonce.value.trim() && ok.checked;
     const paiementOk = estMahram() ? true : ref.value.trim();
-    btn.disabled = !(baseOk && paiementOk);
+    const referentOk = estMahram() ? true : (refNom.value.trim() && refLien.value.trim() && refTel.value.trim());
+    btn.disabled = !(baseOk && paiementOk && referentOk);
   }
 
-  role.addEventListener('change', () => { majPaiement(); verifier(); });
-  [code, role, annonce, ref, ok].forEach(el => el.addEventListener('input', verifier));
+  role.addEventListener('change', () => { majPaiement(); majReferent(); verifier(); });
+  [code, role, annonce, ref, refNom, refLien, refTel, ok].forEach(el => el.addEventListener('input', verifier));
   majPaiement();
+  majReferent();
 
   btn.addEventListener('click', () => {
     if(WHATSAPP_ADMIN === "REMPLACER_NUMERO"){
@@ -362,6 +402,11 @@
     const heure = maintenant.toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit'});
 
     const lignePaiement = estMahram() ? '' : `Référence paiement PayPal : ${p}\n`;
+    const titreRef = estFemme() ? 'Tuteur (mahram)' : 'Référent familial';
+    const blocReferent = estMahram() ? '' :
+`${titreRef} : ${refNom.value.trim()} (${refLien.value.trim()})
+Coordonnées du référent : ${refTel.value.trim()}
+`;
 
     const texte =
 `✍️ SIGNATURE DE LA CHARTE — Narilolané
@@ -369,7 +414,7 @@
 Nom et prénom : ${c}
 Rôle : ${r}
 Mise en relation avec : ${a}
-${lignePaiement}Date : ${date} à ${heure}
+${blocReferent}${lignePaiement}Date : ${date} à ${heure}
 
 Je soussigné(e) ${c} (${r}) déclare avoir lu et accepté la charte du salon Narilolané, accepte d'être mis(e) en relation avec ${a}, et m'engage à respecter cette charte.`;
 
